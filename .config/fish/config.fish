@@ -13,6 +13,9 @@ alias rm="rm -i"
 # Color grep
 alias grep="grep --color=auto"
 
+# GWE for laptop
+# gwe-laptop="prime-offload gwe --ctrl-display ':8'"
+
 # Alias for dotfiles
 alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
