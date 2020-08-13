@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-picom &
+picom --experimental-backends &
 
 # Terminate already running bar instances
 killall -q polybar
