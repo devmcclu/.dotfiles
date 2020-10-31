@@ -56,15 +56,12 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
 modules-left = dwm
-modules-center = mpd
-modules-right = xbacklight pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
+;modules-center = mpd
+modules-right = backlight-acpi pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
 
 tray-position = right
 tray-padding = 2
 ;tray-background = #0063ff
-
-;wm-restack = bspwm
-;wm-restack = i3
 
 ;override-redirect = true
 
@@ -114,7 +111,7 @@ format = <label-tags> <label-layout> <label-floating> <label-title>
 ; socket-path = /tmp/dwm.sock
 
 ; Left-click to view tag, right-click to toggle tag view
-enable-tags-click = false
+enable-tags-click = true
 ; Scroll to cycle between available tags
 enable-tags-scroll = false
 ; If true and enable-tags-scroll = true, scrolling will view all tags regardless if occupied
@@ -219,9 +216,25 @@ bar-empty-font = 2
 bar-empty-foreground = ${colors.foreground-alt}
 
 [module/backlight-acpi]
-inherit = module/xbacklight
+;inherit = module/xbacklight
 type = internal/backlight
 card = intel_backlight
+
+enable-scroll = true
+
+format = <label> <bar>
+label = BL
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = #fff
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.foreground-alt}
 
 [module/cpu]
 type = internal/cpu
@@ -394,7 +407,7 @@ menu-0-1-exec = menu-open-2
 menu-1-0 = cancel
 menu-1-0-exec = menu-open-0
 menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
+menu-1-1-exec = reboot
 
 menu-2-0 = power off
 menu-2-0-exec = shutdown now

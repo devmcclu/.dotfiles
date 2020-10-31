@@ -11,3 +11,9 @@ while pgrep -x polybar >/dev/null; do sleep 1; done
 polybar example &
 
 echo "Bars launched..."
+
+# Restore wallpaper
+nitrogen --restore
+
+# Launch optimus-manager-qt
+optimus-manager-qt &
