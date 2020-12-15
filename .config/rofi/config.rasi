@@ -1,0 +1,6 @@
+configuration {
+	modi: "window,run,drun,ssh,combi";
+	show-icons: true;
+	combi-modi: [run, drun];
+}
+@import "dracula"
