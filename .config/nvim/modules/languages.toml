@@ -1,0 +1,55 @@
+
+[[pluings]]
+repo = 'jackguo380/vim-lsp-cxx-highlight'
+on_ft = [ 'c','cpp' ]
+hook_source = '''
+	call coc#config('languageserver', {
+	\ 'ccls': {
+		\ "command": "ccls",
+		\ "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+		\ "filetypes": ["c","cpp","objc","objcpp"],
+		\ "initializationOptions": {
+		\ "cache":{
+			\ "directory": "/tmp/ccls"
+		\ }
+		\ }
+		\ }
+		\})
+'''
+
+[[plugins]]
+repo = 'rust-lang/rust.vim'
+on_ft = 'rust'
+
+[[plugins]]
+repo = 'vim-python/python-syntax'
+on_ft = 'python'
+hook_source = '''
+	let g:python_highlight_all = 1
+'''
+
+[[plugins]]
+repo = 'Vimjas/vim-python-pep8-indent'
+on_ft = 'python'
+
+[[plugins]]
+repo = 'vim-scripts/python_match.vim'
+on_ft = 'python'
+
+[[plugins]]
+repo = 'raimon49/requirements.txt.vim'
+on_ft = 'requirements'
+
+[[plugins]]
+repo = 'arzg/vim-sh'
+on_ft = [ 'sh','zsh' ]
+hook_source = '''
+	call coc#config('languageserver', {
+	\ 'bash': {
+		\ "command": "bash-language-server",
+		\ "args" : ["start"],
+		\ "ignoredRootPaths": ["~"],
+		\ "filetypes": ["sh"]
+		\ }
+		\})
+'''
