@@ -57,7 +57,8 @@ font-2 = siji:pixelsize=10;1
 
 modules-left = dwm
 ;modules-center = mpd
-modules-right = backlight-acpi pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
+;modules-right = backlight-acpi pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
+modules-right = backlight-acpi pulseaudio xkeyboard wlan eth battery date powermenu
 
 tray-position = right
 tray-padding = 2
