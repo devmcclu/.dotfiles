@@ -163,6 +163,18 @@ modifier = ["modkey"]
 key = "Left"
 
 [[keybind]]
+command = "IncreaseMainWidth"
+value = "5"
+modifier = ["modkey"]
+key = "a"
+
+[[keybind]]
+command = "DecreaseMainWidth"
+value = "5"
+modifier = ["modkey"]
+key = "x"
+
+[[keybind]]
 command = "GotoTag"
 value = "1"
 modifier = ["modkey"]
