@@ -1,0 +1,2 @@
+super + alt + p
+    bash -c "~/batsrc-caveos/devkit/.batsdevrc auto-fill-web-password"
