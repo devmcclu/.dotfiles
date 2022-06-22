@@ -22,6 +22,14 @@ dunst &
 
 flameshot &
 
+sxhkd &
+
+if [-x "$(command -v lxsession)"]; then
+  lxsession &
+elif [-x "$(command -v polkit-dumb-agent)"]; then
+  polkit-dumb-agent &
+fi
+
 index=0
 leftwm-state -q -n -t "$SCRIPTPATH"/sizes.liquid | sed -r '/^\s*$/d' | while read -r width
 do
