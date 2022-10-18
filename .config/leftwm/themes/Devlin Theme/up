@@ -16,7 +16,8 @@ picom --experimental-backends > /dev/null &
 leftwm command "LoadTheme $SCRIPTPATH/theme.toml"
 
 # Set background
-feh --bg-fill "$SCRIPTPATH"/background.png
+# feh --bg-fill "$SCRIPTPATH"/background.png
+pacwall &
 
 dunst &
 

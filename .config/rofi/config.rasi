@@ -1,6 +1,23 @@
-configuration {
+/*configuration {
 	modi: "window,run,drun,ssh,combi";
 	show-icons: true;
 	combi-modi: [run, drun];
 }
-@import "dracula"
+@import "catppuccin-macchiato"*/
+configuration{
+    modi: "run,drun,window";
+    icon-theme: "Papirus-Dark";
+    show-icons: true;
+    terminal: "kitty";
+    drun-display-format: "{icon} {name}";
+    location: 0;
+    disable-history: false;
+    hide-scrollbar: true;
+    display-drun: "   Apps ";
+    display-run: "   Run ";
+    display-window: " 﩯  Window";
+    display-Network: " 󰤨  Network";
+    sidebar-mode: true;
+}
+
+@theme "catppuccin-macchiato"
