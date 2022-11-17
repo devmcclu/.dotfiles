@@ -68,6 +68,8 @@
         (command: FocusWorkspacePrevious, value: "", modifier: ["modkey"], key: "Left"),
         (command: IncreaseMainWidth, value: "5", modifier: ["modkey"], key: "a"),
         (command: DecreaseMainWidth, value: "5", modifier: ["modkey"], key: "x"),
+        (command: FloatingToTile, modifier: ["modkey", "Shift"], key: "t"),
+        (command: TileToFloating, modifier: ["modkey", "Shift"], key: "f"),
         (command: GotoTag, value: "1", modifier: ["modkey"], key: "1"),
         (command: GotoTag, value: "2", modifier: ["modkey"], key: "2"),
         (command: GotoTag, value: "3", modifier: ["modkey"], key: "3"),
