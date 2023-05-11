@@ -16,10 +16,6 @@ setopt autocd extendedglob
 bindkey -e
 # End of lines configured by zsh-newuser-install
 
-# if [[ -s "$HOME/batsrc/.batsdevrc" ]]; then
-#     source "$HOME/batsrc/.batsdevrc"
-# fi
-
 bats.source-cave() { source ~/batsrc-caveos/devkit/.batsdevrc; }
 bats.source-next() { source ~/batsrc/devkit/.batsdevrc; }
 bats.source-master() { source ~/batsrc-master/devkit/.batsdevrc; }
