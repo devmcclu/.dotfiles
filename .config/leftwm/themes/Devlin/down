@@ -1,0 +1,19 @@
+#!/bin/sh
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+
+#set background
+feh --bg-scale "$SCRIPTPATH"/down.jpg
+
+leftwm command "UnloadTheme"
+
+if [-x "$(command -v lxsession)"]; then
+  pkill lxsession
+elif [-x "$(command -v polkit-dumb-agent)"]; then
+  pkill polkit-dumb-agent
+fi
+
+pkill picom
+pkill polybar
+pkill dunst
+pkill flameshot
+pkill sxhkd
