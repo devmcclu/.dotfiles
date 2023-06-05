@@ -16,10 +16,6 @@ setopt autocd extendedglob
 bindkey -e
 # End of lines configured by zsh-newuser-install
 
-bats.source-cave() { source ~/batsrc-caveos/devkit/.batsdevrc; }
-bats.source-next() { source ~/batsrc/devkit/.batsdevrc; }
-bats.source-master() { source ~/batsrc-master/devkit/.batsdevrc; }
-
 setopt prompt_subst
 
 if [[ -s "$HOME/.config/zsh/agnoster.zsh-theme" ]]; then
@@ -41,11 +37,13 @@ alias rmorphans="sudo pacman -Rs $ (pacman -Qtdq)"
 
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-. "$HOME/.cargo/env"
-
+if [[ -s "$HOME/batsrc/.batsdevrc" ]]; then
+	source "$HOME/batsrc/.batsdevrc"
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  . "$HOME/.cargo/env"
+fi
 
 export PATH="/home/devlin/.local/bin:$PATH"
 
@@ -58,15 +56,6 @@ zshrc_add_path() {
 		export PATH="${PATH:+"$PATH:"}$1"
 	fi
 }
-
-# zshrc_batsdevrc() {
-#     if [[ -s "$HOME/batsrc/.batsdevrc" ]]; then
-#         source "$HOME/batsrc/.batsdevrc"
-#         zshrc_add_path "${HOME}/batsrc/.local/bin"
-#     fi
-# }
-
-
 
 zshrc_set_options() {
     HISTFILE=~/.histfile
@@ -247,4 +236,3 @@ source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 zshrc_autoload
 zshrc_setup_completion
 zshrc_set_options
-# zshrc_batsdevrc
