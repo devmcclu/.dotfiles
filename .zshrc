@@ -38,11 +38,11 @@ alias rmorphans="sudo pacman -Rs $ (pacman -Qtdq)"
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 if [[ -s "$HOME/batsrc/.batsdevrc" ]]; then
-	source "$HOME/batsrc/.batsdevrc"
   export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
   . "$HOME/.cargo/env"
+	source "$HOME/batsrc/.batsdevrc"
 fi
 
 export PATH="/home/devlin/.local/bin:$PATH"
