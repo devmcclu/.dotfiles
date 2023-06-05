@@ -43,6 +43,7 @@ if [[ -s "$HOME/batsrc/.batsdevrc" ]]; then
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
   . "$HOME/.cargo/env"
 	source "$HOME/batsrc/.batsdevrc"
+  export PATH="/home/devlin/.bats/bin:$PATH"
 fi
 
 export PATH="/home/devlin/.local/bin:$PATH"
