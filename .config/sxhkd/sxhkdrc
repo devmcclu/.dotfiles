@@ -1,4 +1,4 @@
 super + alt + p
-    bash -c "~/batsrc-caveos/devkit/.batsdevrc auto-fill-web-password"
+    bash -c "~/batsrc/devkit/.batsdevrc auto-fill-web-password"
 super + shift + e
     emoji-picker
