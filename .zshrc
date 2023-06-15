@@ -37,15 +37,6 @@ alias rmorphans="sudo pacman -Rs $ (pacman -Qtdq)"
 
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-if [[ -s "$HOME/batsrc/.batsdevrc" ]]; then
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-  . "$HOME/.cargo/env"
-	source "$HOME/batsrc/.batsdevrc"
-  export PATH="/home/devlin/.bats/bin:$PATH"
-fi
-
 export PATH="/home/devlin/.local/bin:$PATH"
 
 export QT_QPA_PLATFORMTHEME=qt5ct
@@ -232,8 +223,21 @@ zshrc_setup_completion() {
     zstyle :compinstall filename "${HOME}/.zshrc"
 }
 
-source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh-autosuggestions
+source /usr/share/zsh-syntax-highlighting
 
 zshrc_autoload
 zshrc_setup_completion
 zshrc_set_options
+
+if [[ -s "$HOME/batsrc/.batsdevrc" ]]; then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  . "$HOME/.cargo/env"
+	source "$HOME/batsrc/.batsdevrc"
+  export PATH="/home/devlin/.bats/bin:$PATH"
+fi
+
+
