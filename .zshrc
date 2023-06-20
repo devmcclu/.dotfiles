@@ -223,10 +223,6 @@ zshrc_setup_completion() {
     zstyle :compinstall filename "${HOME}/.zshrc"
 }
 
-# source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh-autosuggestions
-source /usr/share/zsh-syntax-highlighting
-
 zshrc_autoload
 zshrc_setup_completion
 zshrc_set_options
@@ -239,5 +235,9 @@ if [[ -s "$HOME/batsrc/.batsdevrc" ]]; then
 	source "$HOME/batsrc/.batsdevrc"
   export PATH="/home/devlin/.bats/bin:$PATH"
 fi
+
+# source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
