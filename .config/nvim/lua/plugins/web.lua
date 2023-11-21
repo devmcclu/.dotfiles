@@ -1,14 +1,10 @@
 return {
   -- for typescript, LazyVim also includes extra specs to properly setup lspconfig,
   -- treesitter, mason and typescript.nvim. So instead of the above, you can use:
-  { import = "lazyvim.plugins.extras.lang.typescript" },
 
   -- add jsonls and schemastore and setup treesitter for json, json5 and jsonc
-  { import = "lazyvim.plugins.extras.lang.json" },
 
   -- add ELSint and Prettier integration
-  { import = "lazyvim.plugins.extras.linting.eslint" },
-  { import = "lazyvim.plugins.extras.formatting.prettier" },
 
   {
     "neovim/nvim-lspconfig",
@@ -16,7 +12,7 @@ return {
       servers = { eslint = {} },
       setup = {
         eslint = function()
-          require("lazyvim.util").on_attach(function(client)
+          require("lazyvim.util").lsp.on_attach(function(client)
             if client.name == "eslint" then
               client.server_capabilities.documentFormattingProvider = true
             elseif client.name == "tsserver" then
@@ -59,7 +55,7 @@ return {
       },
       setup = {
         tsserver = function(_, opts)
-          require("lazyvim.util").on_attach(function(client, buffer)
+          require("lazyvim.util").lsp.on_attach(function(client, buffer)
             if client.name == "tsserver" then
             -- stylua: ignore
             vim.keymap.set("n", "<leader>co", "<cmd>TypescriptOrganizeImports<CR>", { buffer = buffer, desc = "Organize Imports" })
@@ -75,7 +71,7 @@ return {
   },
 
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     opts = function(_, opts)
       local nls = require("null-ls")
       table.insert(opts.sources, nls.builtins.formatting.prettierd)
