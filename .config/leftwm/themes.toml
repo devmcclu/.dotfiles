@@ -149,15 +149,6 @@ leftwm_versions = ">0.2.10, <0.3.0"
 current = false
 
 [[repos.themes]]
-name = "Catppuccin"
-directory = "/home/devlin/.config/leftwm/themes/Catppuccin"
-repository = "https://github.com/di-effe/catppuccin"
-commit = "*"
-version = "0.1.1"
-leftwm_versions = ">0.2.10, <0.3.0"
-current = false
-
-[[repos.themes]]
 name = "Molese"
 repository = "https://github.com/m0lese/leftwm-config"
 commit = "*"
@@ -245,17 +236,31 @@ version = "0.0.1"
 leftwm_versions = ">0.3.0"
 current = false
 
+[[repos.themes]]
+name = "Dementive"
+repository = "https://github.com/dementive/leftwm-dementive"
+commit = "*"
+version = "0.1"
+leftwm_versions = "^0.4.0"
+
+[[repos.themes]]
+name = "Late-Night"
+repository = "https://github.com/JacoMalan1/LateNight"
+commit = "*"
+version = "0.0.2"
+leftwm_versions = ">0.3.0"
+
+[[repos.themes]]
+name = "Catppuccin"
+repository = "https://github.com/di-effe/catppuccin"
+commit = "*"
+version = "0.1.1"
+leftwm_versions = ">0.2.10, <0.3.0"
+
 [[repos]]
 url = "localhost"
 name = "LOCAL"
 definitions_version = 1
-
-[[repos.themes]]
-name = "Devlin Theme"
-directory = "/home/devlin/.config/leftwm/themes/Devlin Theme"
-version = "0.0.0"
-leftwm_versions = "*"
-current = false
 
 [[repos.themes]]
 name = "Devlin"
