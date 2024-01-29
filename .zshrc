@@ -37,6 +37,10 @@ alias rmorphans="sudo pacman -Rs $ (pacman -Qtdq)"
 
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
+alias nvim="/home/devlin/Applications/nvim.appimage"
+
+[ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
+
 export PATH="/home/devlin/.local/bin:$PATH"
 
 export QT_QPA_PLATFORMTHEME=qt5ct
@@ -241,3 +245,10 @@ source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
+
+# bun completions
+[ -s "/home/devlin/.bun/_bun" ] && source "/home/devlin/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
