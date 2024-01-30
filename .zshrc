@@ -1,18 +1,9 @@
 
-
 # The following lines were added by compinstall
 
 zstyle ':completion:*' completer _complete _ignored
-zstyle :compinstall filename '/home/devlin/.zshrc'
 
-autoload -Uz compinit
-compinit
 # End of lines added by compinstall
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-setopt autocd extendedglob
 bindkey -e
 # End of lines configured by zsh-newuser-install
 
@@ -33,26 +24,27 @@ alias grep="grep --color=auto"
 # Remove a package
 alias uninstall="yay -Rs"
 # Remove orphans recursively
-alias rmorphans="sudo pacman -Rs $ (pacman -Qtdq)"
+alias rmorphans='sudo pacman -Rs "$(pacman -Qtdq)"'
 
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-alias nvim="/home/devlin/Applications/nvim.appimage"
+# alias nvim="/home/devlin/Applications/nvim.appimage"
 
 alias nvidia-on="__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia"
 
 [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
 
-export PATH="/home/devlin/.local/bin:$PATH"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export QT_QPA_PLATFORMTHEME=qt5ct
-
+export PATH="$HOME/.local/bin:$PATH"
 ### MAX'S ADDITIONS ###
 
 zshrc_add_path() {
-	if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
-		export PATH="${PATH:+"$PATH:"}$1"
-	fi
+    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+	export PATH="${PATH:+"$PATH:"}$1"
+    fi
 }
 
 zshrc_set_options() {
@@ -234,19 +226,14 @@ zshrc_setup_completion
 zshrc_set_options
 
 if [[ -s "$HOME/batsrc/.batsdevrc" ]]; then
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-  . "$HOME/.cargo/env"
+    . "$HOME/.cargo/env"
 	source "$HOME/batsrc/.batsdevrc"
   export PATH="/home/devlin/.bats/bin:$PATH"
 fi
 
 # source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # bun completions
 [ -s "/home/devlin/.bun/_bun" ] && source "/home/devlin/.bun/_bun"
@@ -254,3 +241,7 @@ source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+export GOPATH="$HOME/go"
+export PATH="$(go env GOPATH)/bin:$PATH"
+
