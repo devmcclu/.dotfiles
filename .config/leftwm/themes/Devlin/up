@@ -13,7 +13,7 @@ ln -s "$SCRIPTPATH"/down /tmp/leftwm-theme-down
 picom > /dev/null &
 
 # Set the theme.toml config
-leftwm command "LoadTheme $SCRIPTPATH/theme.toml"
+leftwm command "LoadTheme $SCRIPTPATH/theme.ron"
 
 # Set background
 # feh --bg-fill "$SCRIPTPATH"/background.png

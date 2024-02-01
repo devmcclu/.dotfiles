@@ -39,7 +39,7 @@ label = %output%
 format-foreground = ${color.foreground}
 format-background = ${color.background}
 format-prefix-foreground = ${color.foreground}
-click-left = alacritty -e sudo pacman -Syu
+click-left = kitty -e sudo pacman -Syu
 click-right = pamac-manager --updates
 
 
@@ -47,8 +47,8 @@ click-right = pamac-manager --updates
 [module/battery]
 ;https://github.com/jaagr/polybar/wiki/Module:-battery
 type = internal/battery
-battery = BAT1
-adapter = AC0
+battery = BAT0
+adapter = AC
 full-at = 100
 
 format-charging = <animation-charging> <label-charging>
