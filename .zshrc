@@ -232,8 +232,8 @@ if [[ -s "$HOME/batsrc/.batsdevrc" ]]; then
 fi
 
 # source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # bun completions
 [ -s "/home/devlin/.bun/_bun" ] && source "/home/devlin/.bun/_bun"
@@ -242,6 +242,9 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-export GOPATH="$HOME/go"
-export PATH="$(go env GOPATH)/bin:$PATH"
+if type "$go" &> /dev/null ; then
+    export GOPATH="$HOME/go"
+    export PATH="$(go env GOPATH)/bin:$PATH"
+fi
+
 
