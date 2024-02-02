@@ -7,7 +7,7 @@ local enabled = {
   "lazy.nvim",
   --"leap.nvim",
   --"mini.ai",
-  --"mini.comment",
+  "mini.comment",
   --"mini.pairs",
   --"mini.surround",
   "nvim-autopairs",
