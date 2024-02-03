@@ -9,13 +9,18 @@ return {
         integrations = {
             cmp = true,
             gitsigns = true,
-            nvimtree = true,
+            neotree = true,
             treesitter = true,
-            notify = false,
+            notify = true,
             mini = {
                 enabled = true,
                 indentscope_color = "",
             },
+            mason = true,
+            telescope = {
+                    enabled = true,
+            },
+            which_key = true
         },
     })
 
