@@ -1,66 +1,61 @@
 return {
-    "echasnovski/mini.starter",
-    version = false, -- wait till new 0.7.0 release to put it back on semver
+    "nvimdev/dashboard-nvim",
     event = "VimEnter",
     opts = function()
-      local logo = table.concat({
-        "            ███████╗███╗   ███╗ ██████╗ ██╗    ██╗   ██╗██╗███╗   ███╗            ",
-        "            ██╔════╝████╗ ████║██╔═══██╗██║    ██║   ██║██║████╗ ████║            ",
-        "            ███████╗██╔████╔██║██║   ██║██║    ██║   ██║██║██╔████╔██║            ",
-        "            ╚════██║██║╚██╔╝██║██║   ██║██║    ╚██╗ ██╔╝██║██║╚██╔╝██║            ",
-        "            ███████║██║ ╚═╝ ██║╚██████╔╝███████╗╚████╔╝ ██║██║ ╚═╝ ██║            ",
-        "            ╚══════╝╚═╝     ╚═╝ ╚═════╝ ╚══════╝ ╚═══╝  ╚═╝╚═╝     ╚═╝            ",
-      }, "\n")
-      local pad = string.rep(" ", 22)
-      local new_section = function(name, action, section)
-        return { name = name, action = action, section = pad .. section }
-      end
+      local logo = [[
+                    ███████╗███╗   ███╗ ██████╗ ██╗    ██╗   ██╗██╗███╗   ███╗            
+                    ██╔════╝████╗ ████║██╔═══██╗██║    ██║   ██║██║████╗ ████║            
+                    ███████╗██╔████╔██║██║   ██║██║    ██║   ██║██║██╔████╔██║            
+                    ╚════██║██║╚██╔╝██║██║   ██║██║    ╚██╗ ██╔╝██║██║╚██╔╝██║            
+                    ███████║██║ ╚═╝ ██║╚██████╔╝███████╗╚████╔╝ ██║██║ ╚═╝ ██║            
+                    ╚══════╝╚═╝     ╚═╝ ╚═════╝ ╚══════╝ ╚═══╝  ╚═╝╚═╝     ╚═╝            
+      ]]
 
-      local starter = require("mini.starter")
-      --stylua: ignore
-      local config = {
-        evaluate_single = true,
-        header = logo,
-        items = {
-          new_section("Find file",       "Telescope find_files",                                   "Telescope"),
-          new_section("Recent files",    "Telescope oldfiles",                                     "Telescope"),
-          new_section("Grep text",       "Telescope live_grep",                                    "Telescope"),
-          new_section("Lazy",            "Lazy",                                                   "Config"),
-          new_section("New file",        "ene | startinsert",                                      "Built-in"),
-          new_section("Quit",            "qa",                                                     "Built-in"),
-          new_section("Session restore", [[lua require("persistence").load()]],                    "Session"),
+      logo = string.rep("\n", 8) .. logo .. "\n\n"
+
+      local opts = {
+        theme = "doom",
+        hide = {
+          -- this is taken care of by lualine
+          -- enabling this messes up the actual laststatus setting after loading a file
+          statusline = false,
         },
-        content_hooks = {
-          starter.gen_hook.adding_bullet(pad .. "░ ", false),
-          starter.gen_hook.aligning("center", "center"),
+        config = {
+          header = vim.split(logo, "\n"),
+          -- stylua: ignore
+          center = {
+            { action = "Telescope find_files",                                     desc = " Find file",       icon = " ", key = "f" },
+            { action = "ene | startinsert",                                        desc = " New file",        icon = " ", key = "n" },
+            { action = "Telescope oldfiles",                                       desc = " Recent files",    icon = " ", key = "r" },
+            { action = "Telescope live_grep",                                      desc = " Find text",       icon = " ", key = "g" },
+            { action = 'lua require("persistence").load()',                        desc = " Restore Session", icon = " ", key = "s" },
+            { action = "Lazy",                                                     desc = " Lazy",            icon = "󰒲 ", key = "l" },
+            { action = "qa",                                                       desc = " Quit",            icon = " ", key = "q" },
+          },
+          footer = function()
+            local stats = require("lazy").stats()
+            local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+            return { "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms" }
+          end,
         },
       }
-      return config
-    end,
-    config = function(_, config)
-      -- close Lazy and re-open when starter is ready
+
+      for _, button in ipairs(opts.config.center) do
+        button.desc = button.desc .. string.rep(" ", 43 - #button.desc)
+        button.key_format = "  %s"
+      end
+
+      -- close Lazy and re-open when the dashboard is ready
       if vim.o.filetype == "lazy" then
         vim.cmd.close()
         vim.api.nvim_create_autocmd("User", {
-          pattern = "MiniStarterOpened",
+          pattern = "DashboardLoaded",
           callback = function()
             require("lazy").show()
           end,
         })
       end
 
-      local starter = require("mini.starter")
-      starter.setup(config)
-
-      vim.api.nvim_create_autocmd("User", {
-        pattern = "LazyVimStarted",
-        callback = function()
-          local stats = require("lazy").stats()
-          local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-          local pad_footer = string.rep(" ", 8)
-          starter.config.footer = pad_footer .. "⚡ Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
-          pcall(starter.refresh)
-        end,
-      })
+      return opts
     end,
   }
