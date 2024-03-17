@@ -1,13 +1,5 @@
-if type "$wal" &> /dev/null ; then 
-    wal -R
-fi
+wal -R
+export QT_QPA_PLATFORMTHEME=qt6ct
 
-if type "$qt5ct" &> /dev/null ; then
-    export QT_QPA_PLATFORMTHEME=qt5ct
-fi
-
-
-if type "$go" &> /dev/null ; then
-    export GOPATH="$HOME/go"
-    export PATH="$(go env GOPATH)/bin:$PATH"
-fi
+export GOPATH="$HOME/go"
+export PATH="$(go env GOPATH)/bin:$PATH"
