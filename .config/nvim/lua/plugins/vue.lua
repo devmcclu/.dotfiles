@@ -15,4 +15,20 @@ return {
       table.insert(opts.ensure_installed, "vue-language-server")
     end,
   },
+
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        volar = {
+          init_options = {
+            typescript = {
+              tsdk = "/home/devlin/.local/share/nvim/mason/packages/vue-language-server/node_modules/typescript/lib",
+            },
+          },
+          filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
+        },
+      },
+    },
+  },
 }
