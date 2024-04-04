@@ -23,8 +23,8 @@ return {
       servers = {
         volar = {
           init_options = {
-            typescript = {
-              tsdk = "/home/devlin/.local/share/nvim/mason/packages/vue-language-server/node_modules/typescript/lib",
+            vue = {
+              hybridMode = false,
             },
           },
           filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
