@@ -21,7 +21,17 @@
     "tray",
   ],
   "hyprland/workspaces": {
-    "format": "{name}",
+    "format": "{icon}",
+    "format-icons": {
+      "active": " ",
+      "default": " ",
+      "empty": " ",
+    },
+    "persistent-workspaces": {
+      "*": 10,
+    },
+    "active-only": false,
+    "all-outputs": true,
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1",
   },
@@ -35,7 +45,9 @@
     },
   },
   "hyprland/submap": {
-    "format": "<span style=\"italic\">{}</span>",
+    "format": "{}",
+    "max-length": 8,
+    "tooltip": false,
   },
   "idle_inhibitor": {
     "format": "{icon}",
