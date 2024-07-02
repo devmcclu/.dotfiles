@@ -6,7 +6,9 @@
     "lazyvim.plugins.extras.lang.clangd",
     "lazyvim.plugins.extras.lang.cmake",
     "lazyvim.plugins.extras.lang.docker",
+    "lazyvim.plugins.extras.lang.git",
     "lazyvim.plugins.extras.lang.go",
+    "lazyvim.plugins.extras.lang.java",
     "lazyvim.plugins.extras.lang.json",
     "lazyvim.plugins.extras.lang.markdown",
     "lazyvim.plugins.extras.lang.python",
@@ -25,7 +27,7 @@
     "lazyvim.plugins.extras.vscode"
   ],
   "news": {
-    "NEWS.md": "4964"
+    "NEWS.md": "6077"
   },
   "version": 6
 }

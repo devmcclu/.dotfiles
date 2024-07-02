@@ -38,13 +38,12 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 alias nvidia-on="__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia"
 
-[ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
+# [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export PATH="$HOME/.local/bin:$PATH"
 ### MAX'S ADDITIONS ###
 
 zshrc_add_path() {
@@ -231,12 +230,6 @@ zshrc_autoload
 zshrc_setup_completion
 zshrc_set_options
 
-if [[ -s "$HOME/batsrc/.batsdevrc" ]]; then
-    . "$HOME/.cargo/env"
-	source "$HOME/batsrc/.batsdevrc"
-  export PATH="/home/devlin/.bats/bin:$PATH"
-fi
-
 # source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -247,9 +240,13 @@ eval "$(zoxide init zsh)"
 # bun completions
 [ -s "/home/devlin/.bun/_bun" ] && source "/home/devlin/.bun/_bun"
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+export BATS_DEVKIT_DISTROBOX=1
+
+if [[ -s "$HOME/batsrc/.batsdevrc" ]]; then
+	source "$HOME/batsrc/.batsdevrc"
+	export PATH="/home/devlin/.bats/bin:$PATH"
+fi
 
 export GOPATH="$HOME/go"
-export PATH="$(go env GOPATH)/bin:$PATH"
+PATH="$(go env GOPATH)/bin:$PATH"
+
