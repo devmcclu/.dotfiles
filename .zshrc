@@ -249,4 +249,4 @@ fi
 
 export GOPATH="$HOME/go"
 PATH="$(go env GOPATH)/bin:$PATH"
-
+source "$HOME/.zsh/wp-completion.bash"
