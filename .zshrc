@@ -250,3 +250,14 @@ fi
 export GOPATH="$HOME/go"
 PATH="$(go env GOPATH)/bin:$PATH"
 source "$HOME/.zsh/wp-completion.bash"
+
+# pnpm
+export PNPM_HOME="/home/devlin/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# rbenv
+eval "$(rbenv init -)"
