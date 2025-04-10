@@ -40,9 +40,9 @@ alias nvidia-on="__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia"
 
 # [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 ### MAX'S ADDITIONS ###
 
@@ -242,9 +242,23 @@ eval "$(zoxide init zsh)"
 
 export BATS_DEVKIT_DISTROBOX=1
 
-if [[ -s "$HOME/batsrc/.batsdevrc" ]]; then
-	source "$HOME/batsrc/.batsdevrc"
-	export PATH="/home/devlin/.bats/bin:$PATH"
+if [[ -s "$HOME/batsrc/meta/.batsdevrc" ]]; then
+	source "$HOME/batsrc/meta/.batsdevrc"
+fi
+
+if [[ -s "$HOME/batsrc/5gcore/devkit/.batsdevrc" ]]; then
+	source "$HOME/batsrc/5gcore/devkit/.batsdevrc"
+fi
+
+export BATS_5GCORE_DEVKIT_DISTROBOX=1
+bats5g.code() {
+        cd ~/batsrc/5gcore
+}
+bats5g.source() { [[ -f ~/batsrc/5gcore/devkit/.batsdevrc ]] && source ~/batsrc/5gcore/devkit/.batsdevrc; }
+
+if [ ! -z "${BATS_5GCORE_IMAGE_NAME}" ]; then
+	# already inside distrobox image
+	bats5g.source
 fi
 
 export GOPATH="$HOME/go"
