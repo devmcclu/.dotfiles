@@ -241,19 +241,13 @@ eval "$(zoxide init zsh)"
 [ -s "/home/devlin/.bun/_bun" ] && source "/home/devlin/.bun/_bun"
 
 export BATS_DEVKIT_DISTROBOX=1
-
-if [[ -s "$HOME/batsrc/meta/.batsdevrc" ]]; then
-	source "$HOME/batsrc/meta/.batsdevrc"
-fi
-
-if [[ -s "$HOME/batsrc/5gcore/devkit/.batsdevrc" ]]; then
-	source "$HOME/batsrc/5gcore/devkit/.batsdevrc"
+bats.source() { [[ -f ~/batsrc/meta/devkit/.batsdevrc ]] && source ~/batsrc/meta/devkit/.batsdevrc; }
+if [ ! -z "${BATS_IMAGE_NAME}" ]; then
+	# already inside distrobox image
+	bats.source
 fi
 
 export BATS_5GCORE_DEVKIT_DISTROBOX=1
-bats5g.code() {
-        cd ~/batsrc/5gcore
-}
 bats5g.source() { [[ -f ~/batsrc/5gcore/devkit/.batsdevrc ]] && source ~/batsrc/5gcore/devkit/.batsdevrc; }
 
 if [ ! -z "${BATS_5GCORE_IMAGE_NAME}" ]; then
