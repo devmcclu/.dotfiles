@@ -40,10 +40,6 @@ alias nvidia-on="__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia"
 
 # [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
 
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 ### MAX'S ADDITIONS ###
 
 zshrc_add_path() {
@@ -237,9 +233,6 @@ zshrc_set_options
 # Zoxide 
 eval "$(zoxide init zsh)"
 
-# bun completions
-[ -s "/home/devlin/.bun/_bun" ] && source "/home/devlin/.bun/_bun"
-
 export BATS_DEVKIT_DISTROBOX=1
 bats.source() { [[ -f ~/batsrc/meta/devkit/.batsdevrc ]] && source ~/batsrc/meta/devkit/.batsdevrc; }
 if [ ! -z "${BATS_IMAGE_NAME}" ]; then
@@ -269,3 +262,13 @@ esac
 
 # rbenv
 eval "$(rbenv init -)"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+# bun completions
+[ -s "/home/devlin/.bun/_bun" ] && source "/home/devlin/.bun/_bun"
+
+
+eval "$(fnm completions --shell zsh)"
+eval "$(fnm env --use-on-cd --shell zsh)"
