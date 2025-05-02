@@ -269,6 +269,13 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # bun completions
 [ -s "/home/devlin/.bun/_bun" ] && source "/home/devlin/.bun/_bun"
 
-eval "$(fnm completions --shell zsh)"
-eval "$(fnm env --use-on-cd --shell zsh)"
 eval "$(uplift completion zsh)"
+
+# fnm
+FNM_PATH="/home/devlin/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/devlin/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+  eval "$(fnm completions --shell zsh)"
+  eval "$(fnm env --use-on-cd --shell zsh)"
+fi
