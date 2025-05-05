@@ -279,3 +279,7 @@ if [ -d "$FNM_PATH" ]; then
   eval "$(fnm completions --shell zsh)"
   eval "$(fnm env --use-on-cd --shell zsh)"
 fi
+
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
