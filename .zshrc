@@ -283,3 +283,6 @@ fi
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
+source "$HOME/.zsh/supabash-comp.zsh"
+
+eval $(thefuck --alias)
