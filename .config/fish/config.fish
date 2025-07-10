@@ -28,3 +28,5 @@ set -g theme_powerline_fonts no
 set -g theme_nerd_fonts yes
 #Set bobthefish color scheme
 set -g theme_color_scheme dracula
+set -gx VOLTA_HOME "$HOME/.volta"
+set -gx PATH "$VOLTA_HOME/bin" $PATH

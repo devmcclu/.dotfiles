@@ -57,3 +57,12 @@ lsd
 discord
 vulkan-tools
 catppuccin-cursors-macchiato
+bluez
+bluez-utils
+blueman
+xone
+xpadneo
+libportal-gtk3
+libportal-gtk4
+libportal-qt5
+libportal-qt6

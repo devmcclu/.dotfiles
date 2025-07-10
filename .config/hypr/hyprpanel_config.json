@@ -1,0 +1,56 @@
+{
+  "theme.font.name": "Roboto",
+  "theme.font.label": "Roboto",
+  "theme.font.size": "0.9rem",
+  "theme.font.weight": 600,
+  "tear": true,
+  "theme.bar.floating": true,
+  "theme.bar.enableShadow": false,
+  "theme.bar.border.location": "none",
+  "theme.bar.transparent": true,
+  "bar.layouts": {
+    "0": {
+      "left": [
+        "dashboard",
+        "workspaces",
+        "windowtitle"
+      ],
+      "middle": [
+        "media"
+      ],
+      "right": [
+        "hypridle",
+        "volume",
+        "network",
+        "bluetooth",
+        "systray",
+        "clock",
+        "notifications"
+      ]
+    }
+  },
+  "menus.dashboard.shortcuts.enabled": true,
+  "theme.bar.menus.monochrome": false,
+  "bar.workspaces.show_icons": true,
+  "bar.workspaces.show_numbered": false,
+  "bar.workspaces.showWsIcons": false,
+  "bar.workspaces.showApplicationIcons": false,
+  "bar.workspaces.applicationIconOncePerWorkspace": true,
+  "bar.workspaces.showAllActive": true,
+  "bar.workspaces.workspaces": 10,
+  "theme.bar.buttons.workspaces.smartHighlight": true,
+  "bar.workspaces.monitorSpecific": false,
+  "bar.workspaces.workspaceMask": false,
+  "theme.bar.buttons.workspaces.enableBorder": false,
+  "bar.windowtitle.custom_title": true,
+  "menus.dashboard.shortcuts.left.shortcut1.icon": "󰈹",
+  "menus.dashboard.shortcuts.left.shortcut1.command": "firefox",
+  "menus.dashboard.shortcuts.left.shortcut1.tooltip": "Firefox",
+  "menus.dashboard.shortcuts.left.shortcut3.command": "legcord",
+  "menus.dashboard.shortcuts.left.shortcut4.command": "wofi -show drun",
+  "menus.dashboard.shortcuts.left.shortcut2.tooltip": "Thunar",
+  "menus.dashboard.shortcuts.left.shortcut2.command": "thunar",
+  "menus.dashboard.shortcuts.left.shortcut2.icon": "",
+  "menus.transition": "crossfade",
+  "menus.transitionTime": 200
+}
